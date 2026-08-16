@@ -1,0 +1,48 @@
+name: Import latest playable build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/import-latest-build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout published branch
+        uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Replace the stale build
+        shell: bash
+        env:
+          BUILD_URL: "https://sdmntprnortheu.oaiusercontent.com/files/00000000-fb2c-81f4-8274-a0607bc165c3/raw?se=2026-08-16T06%3A25%3A58Z&sp=r&sv=2026-02-06&sr=b&scid=1e24f49f-b554-5852-aa1e-226ca02a63a9&skoid=5bfb38a5-43fb-4c63-80a1-6ae1e97e2e16&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-08-16T05%3A30%3A39Z&ske=2026-08-17T05%3A30%3A39Z&sks=b&skv=2026-02-06&sig=YDWha1%2B1ZIhrkbbOkOqcj5kw7Wuv9DLnSUoVhxdHMcY%3D"
+        run: |
+          set -euo pipefail
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          curl --fail --location --retry 3 --retry-delay 2 "$BUILD_URL" --output /tmp/rotaweb-build.zip
+          mkdir -p /tmp/rotaweb-artifact
+          unzip -q /tmp/rotaweb-build.zip -d /tmp/rotaweb-artifact
+          tar -xzf /tmp/rotaweb-artifact/rotaweb-public-build.tar.gz -C .
+          test -s index.html
+          test -s assets/index-Bpie9gTO.js
+          test -s assets/index-BhR6KEGJ.css
+          test -s BUILD_INFO.txt
+          grep -q 'rota-v1.1.1' sw.js
+
+      - name: Publish corrected build
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "deploy: publish merged UX gameplay changes"
+          git push origin HEAD:gh-pages
