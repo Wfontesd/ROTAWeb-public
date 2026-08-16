@@ -1,8 +1,6 @@
 name: Publish playable build
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
