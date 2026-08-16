@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "models": {
+    "penitent": { "enabled": false, "url": "./assets/models/penitent.glb", "scale": 1 },
+    "widow": { "enabled": false, "url": "./assets/models/widow.glb", "scale": 1 },
+    "ash-bearer": { "enabled": false, "url": "./assets/models/ash-bearer.glb", "scale": 1 },
+    "void-scribe": { "enabled": false, "url": "./assets/models/void-scribe.glb", "scale": 1 },
+    "fanatic": { "enabled": false, "url": "./assets/models/fanatic.glb", "scale": 1 },
+    "crawling-shadow": { "enabled": false, "url": "./assets/models/crawling-shadow.glb", "scale": 1 },
+    "ink-bearer": { "enabled": false, "url": "./assets/models/ink-bearer.glb", "scale": 1 },
+    "chain-guardian": { "enabled": false, "url": "./assets/models/chain-guardian.glb", "scale": 1 },
+    "void-cantor": { "enabled": false, "url": "./assets/models/void-cantor.glb", "scale": 1 },
+    "grave-leech": { "enabled": false, "url": "./assets/models/grave-leech.glb", "scale": 1 },
+    "censor-elite": { "enabled": false, "url": "./assets/models/censor-elite.glb", "scale": 1 },
+    "boss-inquisitor": { "enabled": false, "url": "./assets/models/boss-inquisitor.glb", "scale": 1 },
+    "boss-bibliophage": { "enabled": false, "url": "./assets/models/boss-bibliophage.glb", "scale": 1 },
+    "boss-inverted-king": { "enabled": false, "url": "./assets/models/boss-inverted-king.glb", "scale": 1 },
+    "boss-faceless-judge": { "enabled": false, "url": "./assets/models/boss-faceless-judge.glb", "scale": 1 },
+    "boss-author": { "enabled": false, "url": "./assets/models/boss-author.glb", "scale": 1 }
+  }
+}

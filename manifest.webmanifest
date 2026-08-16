@@ -1,0 +1,13 @@
+{
+  "name": "Rules of the Abyss",
+  "short_name": "ROTA",
+  "description": "Roguelite dark fantasy où le joueur réécrit les lois du combat.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07050a",
+  "theme_color": "#09060d",
+  "lang": "fr",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
